@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import RootProvider from "@/components/providers/RootProviders";
+import RootProviders from "@/components/providers/RootProviders";
+import { Toaster } from "@/components/ui/sonner";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "FinanceBuddy",
-  description: "Finance Tracker",
+  title: "Budget Tracker",
+  description: "CodeWithKliton",
 };
 
 export default function RootLayout({
@@ -17,15 +19,18 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en" className="dark" style={{
-      colorScheme:"dark",
-    }}>
-      <body className={inter.className}>
-        <RootProvider>
-        {children}
-        </RootProvider>
+      <html
+        lang="en"
+        className="dark"
+        style={{
+          colorScheme: "dark",
+        }}
+      >
+        <body className={inter.className}>
+          <Toaster richColors position="bottom-right" />
+          <RootProviders>{children}</RootProviders>
         </body>
-    </html>
+      </html>
     </ClerkProvider>
   );
 }
