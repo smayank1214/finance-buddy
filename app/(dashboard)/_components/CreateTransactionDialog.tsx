@@ -82,8 +82,6 @@ function CreateTransactionDialog({ trigger, type }: Props) {
         date: new Date(),
         category: undefined,
       });
-
-      // After creating a transaction, we need to invalidate the overview query which will refetch data in the homepage
       queryClient.invalidateQueries({
         queryKey: ["overview"],
       });
