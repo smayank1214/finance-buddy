@@ -54,7 +54,8 @@ async function page() {
           </div>
         </div>
       </div>
-     {/* overview and history section */}
+      <Overview userSettings={userSettings} />
+     {/*history section */}
     </div>
   );
 }
